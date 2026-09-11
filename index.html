@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MK Associates – Accounting & Tax Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B2447;
+    --blue: #1565C0;
+    --sky: #1E88E5;
+    --accent: #2196F3;
+    --light-blue: #E3F2FD;
+    --lighter-blue: #F0F7FF;
+    --white: #FFFFFF;
+    --gray: #607D8B;
+    --light-gray: #F5F7FA;
+    --text: #1A2332;
+    --border: #DDEEFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(11,36,71,0.12); }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--navy), var(--sky));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .logo-text { line-height: 1.2; }
+  .logo-text strong { display: block; font-size: 15px; color: var(--navy); font-weight: 700; }
+  .logo-text span { font-size: 11px; color: var(--gray); font-weight: 400; }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 8px 14px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    background: var(--light-blue);
+    color: var(--blue);
+  }
+
+  .nav-cta {
+    background: var(--blue) !important;
+    color: white !important;
+    padding: 9px 20px !important;
+  }
+  .nav-cta:hover { background: var(--navy) !important; color: white !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px; height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 68px; left: 0; right: 0; bottom: 0;
+    background: white;
+    z-index: 999;
+    padding: 20px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu a {
+    display: block;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .mobile-menu a:hover { background: var(--light-blue); color: var(--blue); }
+
+  /* ─── HERO ─── */
+  #home {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, #1565C0 60%, #1E88E5 100%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 68px;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.07) 0%, transparent 40%),
+      radial-gradient(circle at 60% 80%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  }
+
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 16px;
+    border-radius: 50px;
+    color: rgba(255,255,255,0.9);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    backdrop-filter: blur(8px);
+    animation: fadeInUp 0.8s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: #4FC3F7;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 700;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.8s 0.1s ease both;
+  }
+
+  .hero-title .highlight {
+    color: #90CAF9;
+    font-style: italic;
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 520px;
+    animation: fadeInUp 0.8s 0.2s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: white;
+    color: var(--navy);
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-outline:hover {
+    border-color: white;
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 48px;
+    animation: fadeInUp 0.8s 0.4s ease both;
+  }
+
+  .hero-stat { text-align: left; }
+  .hero-stat strong { display: block; font-size: 28px; font-weight: 700; color: white; }
+  .hero-stat span { font-size: 12px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative;
+    animation: fadeInRight 0.9s 0.2s ease both;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+  }
+
+  .hero-card-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 20px;
+  }
+
+  .service-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .service-pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .service-pill-icon { font-size: 14px; }
+
+  .floating-card {
+    position: absolute;
+    background: white;
+    border-radius: 14px;
+    padding: 14px 18px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .floating-card-1 {
+    top: -20px; right: -20px;
+    animation-delay: 0s;
+  }
+  .floating-card-2 {
+    bottom: -20px; left: -20px;
+    animation-delay: 2s;
+  }
+
+  .floating-card strong { display: block; font-size: 18px; font-weight: 700; color: var(--navy); }
+  .floating-card span { font-size: 11px; color: var(--gray); }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ─── SECTION COMMON ─── */
+  section { padding: 80px 20px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    display: inline-block;
+    background: var(--light-blue);
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 580px;
+  }
+
+  .section-header {
+    margin-bottom: 50px;
+  }
+
+  /* ─── WHY US ─── */
+  #why {
+    background: var(--lighter-blue);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .why-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(21,101,192,0.12);
+    border-color: var(--accent);
+  }
+
+  .why-icon {
+    width: 48px; height: 48px;
+    background: var(--light-blue);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .why-card h3 { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .why-card p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+  /* ─── SERVICES ─── */
+  #services { background: white; }
+
+  .services-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0;
+  }
+
+  .tab-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: -2px;
+    border-radius: 8px 8px 0 0;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--blue); background: var(--lighter-blue); }
+  .tab-btn.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+    font-weight: 600;
+  }
+
+  .tab-panel { display: none; animation: fadeInUp 0.4s ease; }
+  .tab-panel.active { display: block; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .service-card {
+    background: var(--lighter-blue);
+    border-radius: 16px;
+    padding: 26px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(var(--sky), var(--blue));
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover::after { transform: scaleY(1); }
+  .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(21,101,192,0.1);
+    border-color: var(--accent);
+  }
+
+  .service-card-icon { font-size: 28px; margin-bottom: 12px; }
+  .service-card h3 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .service-card p { font-size: 13.5px; color: var(--gray); line-height: 1.6; margin-bottom: 14px; }
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .service-tag {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--blue);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 50px;
+  }
+
+  /* ─── COMPANY TYPES ─── */
+  #company {
+    background: var(--lighter-blue);
+  }
+
+  .company-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .company-card {
+    background: white;
+    border-radius: 18px;
+    padding: 32px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .company-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(21,101,192,0.13);
+  }
+
+  .company-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .company-card-icon {
+    width: 50px; height: 50px;
+    background: linear-gradient(135deg, var(--light-blue), #BBDEFB);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  .company-card h3 { font-size: 18px; font-weight: 700; color: var(--navy); }
+  .company-card p { font-size: 14px; color: var(--gray); line-height: 1.65; margin-bottom: 18px; }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .feature-list li::before {
+    content: '✓';
+    width: 20px; height: 20px;
+    background: var(--light-blue);
+    color: var(--blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  /* ─── GST SERVICES ─── */
+  #gst { background: white; }
+
+  .gst-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  /* ─── INCOME TAX ─── */
+  #tax { background: var(--lighter-blue); }
+
+  /* ─── ABOUT ─── */
+  #about { background: white; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-visual {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--sky) 100%);
+    border-radius: 24px;
+    padding: 48px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-visual::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .about-visual h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .about-visual p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 30px;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .about-stat {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .about-stat strong { display: block; font-size: 26px; font-weight: 700; }
+  .about-stat span { font-size: 12px; color: rgba(255,255,255,0.7); }
+
+  .about-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--navy);
+    margin-bottom: 18px;
+  }
+
+  .about-content p {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .professional-info {
+    background: var(--lighter-blue);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 24px;
+    border: 1px solid var(--border);
+  }
+  .professional-info h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); margin-bottom: 12px; }
+
+  .pro-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .pro-title {
+    font-size: 14px;
+    color: var(--blue);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .pro-contacts { display: flex; flex-direction: column; gap: 6px; }
+  .pro-contact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text);
+  }
+  .pro-contact-icon { font-size: 14px; }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--lighter-blue); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 50px;
+    align-items: start;
+  }
+
+  .contact-info-card {
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    border-radius: 20px;
+    padding: 36px;
+    color: white;
+  }
+
+  .contact-info-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  .contact-info-card > p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  .contact-items { display: flex; flex-direction: column; gap: 20px; }
+
+  .contact-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .contact-item-icon {
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .contact-item-text strong { display: block; font-size: 13px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .contact-item-text span { font-size: 14.5px; color: white; line-height: 1.5; }
+  .contact-item-text a { color: white; text-decoration: none; }
+  .contact-item-text a:hover { text-decoration: underline; }
+
+  /* Form */
+  .contact-form {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 30px rgba(21,101,192,0.08);
+  }
+
+  .contact-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .contact-form > p {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 28px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 7px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--lighter-blue);
+    transition: all 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--blue);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(33,150,243,0.1);
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--blue), var(--sky));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(21,101,192,0.3);
+  }
+
+  .form-success {
+    display: none;
+    background: #E8F5E9;
+    border: 1px solid #A5D6A7;
+    border-radius: 10px;
+    padding: 16px;
+    color: #2E7D32;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    color: white;
+    padding: 60px 20px 24px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand .logo-icon { margin-bottom: 16px; }
+
+  .footer-brand p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .footer-col h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-links a:hover { color: #90CAF9; }
+  .footer-links a::before { content: '→'; font-size: 12px; color: var(--accent); }
+
+  .footer-contact-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+  }
+  .footer-contact-item a { color: rgba(255,255,255,0.75); text-decoration: none; }
+  .footer-contact-item a:hover { color: #90CAF9; }
+  .footer-contact-icon { font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+
+  .footer-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 24px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── BACK TO TOP ─── */
+  #back-top {
+    position: fixed;
+    bottom: 28px; right: 24px;
+    width: 44px; height: 44px;
+    background: var(--blue);
+    color: white;
+    border-radius: 12px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(21,101,192,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    z-index: 900;
+  }
+  #back-top.show { opacity: 1; pointer-events: auto; }
+  #back-top:hover { background: var(--navy); transform: translateY(-2px); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 60px 16px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: block; }
+
+    .hero-inner { padding: 60px 16px 40px; }
+    .hero-stats { flex-wrap: wrap; gap: 16px; }
+
+    .form-row { grid-template-columns: 1fr; }
+    .contact-form { padding: 24px 18px; }
+    .contact-info-card { padding: 24px; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+    .services-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 0; }
+    .services-tabs::-webkit-scrollbar { display: none; }
+    .tab-btn { white-space: nowrap; flex-shrink: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="logo">
+      <div class="logo-icon">MK</div>
+      <div class="logo-text">
+        <strong>MK Associates</strong>
+        <span>Accounting & Tax Services</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#company">Registrations</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#home" onclick="closeMobile()">🏠 Home</a>
+  <a href="#why" onclick="closeMobile()">✨ Why Us</a>
+  <a href="#services" onclick="closeMobile()">📋 Services</a>
+  <a href="#company" onclick="closeMobile()">🏢 Company Incorporation</a>
+  <a href="#gst" onclick="closeMobile()">📊 GST Services</a>
+  <a href="#tax" onclick="closeMobile()">💼 Income Tax</a>
+  <a href="#about" onclick="closeMobile()">👤 About</a>
+  <a href="#contact" onclick="closeMobile()">📞 Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Trusted Financial Experts in South Coorg</div>
+      <h1 class="hero-title">
+        Smart Tax &<br><span class="highlight">Accounting</span><br>Solutions
+      </h1>
+      <p class="hero-subtitle">
+        Professional accounting, GST filing, income tax, company registration, and financial advisory services — tailored for individuals and businesses.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">📞 Get Free Consultation</a>
+        <a href="#services" class="btn-outline">Explore Services →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>500+</strong>
+          <span>Clients Served</span>
+        </div>
+        <div class="hero-stat">
+          <strong>10+</strong>
+          <span>Years Experience</span>
+        </div>
+        <div class="hero-stat">
+          <strong>100%</strong>
+          <span>Compliance Rate</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-card floating-card-1">
+        <strong>₹ GST</strong>
+        <span>Return Filed ✓</span>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">Our Core Services</div>
+        <div class="service-pills">
+          <div class="service-pill"><span class="service-pill-icon">📋</span> GST Filing</div>
+          <div class="service-pill"><span class="service-pill-icon">💰</span> Income Tax</div>
+          <div class="service-pill"><span class="service-pill-icon">🏢</span> Company Reg.</div>
+          <div class="service-pill"><span class="service-pill-icon">📊</span> Accounting</div>
+          <div class="service-pill"><span class="service-pill-icon">📈</span> Investments</div>
+          <div class="service-pill"><span class="service-pill-icon">🔐</span> Digital Sign</div>
+          <div class="service-pill"><span class="service-pill-icon">™</span> Trademark</div>
+          <div class="service-pill"><span class="service-pill-icon">🏦</span> Mutual Funds</div>
+        </div>
+      </div>
+      <div class="floating-card floating-card-2">
+        <strong>ITR Filed</strong>
+        <span>AY 2024-25 ✓</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title">Your Financial Success<br>is Our Priority</h2>
+      <p class="section-sub">We combine expert knowledge with personalized service to ensure your financial and legal compliance is handled with utmost care and precision.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">🎯</div>
+        <h3>Expert Professionals</h3>
+        <p>Qualified CMA and experienced team with deep knowledge in taxation, accounting, and compliance.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">⚡</div>
+        <h3>Timely Filing</h3>
+        <p>We ensure all your returns and registrations are filed before deadlines, avoiding penalties.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🔒</div>
+        <h3>100% Confidential</h3>
+        <p>Your financial data is handled with complete confidentiality and the highest security standards.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">💡</div>
+        <h3>Strategic Advice</h3>
+        <p>Not just compliance — we help you plan tax-efficient strategies to maximize your savings.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">📱</div>
+        <h3>Always Accessible</h3>
+        <p>Reach us anytime via call, WhatsApp, or email for quick responses to your queries.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">💸</div>
+        <h3>Affordable Pricing</h3>
+        <p>Transparent, competitive pricing with no hidden charges — value for every rupee spent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Comprehensive Financial<br>& Tax Services</h2>
+      <p class="section-sub">From GST filing to equity trading and trademark registration — we cover every financial need your business has.</p>
+    </div>
+
+    <div class="services-tabs reveal">
+      <button class="tab-btn active" onclick="showTab('registrations')">🏢 Business Registrations</button>
+      <button class="tab-btn" onclick="showTab('gst-services')">📊 GST Services</button>
+      <button class="tab-btn" onclick="showTab('income-tax')">💼 Income Tax</button>
+      <button class="tab-btn" onclick="showTab('other-services')">⭐ Other Services</button>
+    </div>
+
+    <!-- Registrations -->
+    <div class="tab-panel active" id="tab-registrations">
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-card-icon">🏛️</div>
+          <h3>GST Registration</h3>
+          <p>Obtaining a Goods and Services Tax (GST) identification number for your business or individual entity.</p>
+          <div class="service-tags">
+            <span class="service-tag">Single Taxation</span>
+            <span class="service-tag">Threshold Limits</span>
+            <span class="service-tag">Transparency</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🪪</div>
+          <h3>PAN & TAN</h3>
+          <p>Permanent Account Number & Tax Deduction and Collection Account Number issued by tax authorities.</p>
+          <div class="service-tags">
+            <span class="service-tag">Unique ID</span>
+            <span class="service-tag">KYC Compliance</span>
+            <span class="service-tag">Widely Accepted</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🏪</div>
+          <h3>Shop & Establishment</h3>
+          <p>Register your shop or establishment to ensure legal recognition and employee protection.</p>
+          <div class="service-tags">
+            <span class="service-tag">Employee Protection</span>
+            <span class="service-tag">Statutory Recognition</span>
+            <span class="service-tag">Credibility</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🏦</div>
+          <h3>Provident Fund (PF)</h3>
+          <p>PF Registration to ensure retirement savings and employee welfare benefits for your staff.</p>
+          <div class="service-tags">
+            <span class="service-tag">Retirement Savings</span>
+            <span class="service-tag">Employee Protection</span>
+            <span class="service-tag">Tax Benefits</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">📋</div>
+          <h3>Professional Tax (PT)</h3>
+          <p>Professional Tax registration to ensure legal compliance with state tax obligations.</p>
+          <div class="service-tags">
+            <span class="service-tag">Legal Compliance</span>
+            <span class="service-tag">State Revenue</span>
+            <span class="service-tag">Exemptions</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🚀</div>
+          <h3>Startup India Registration</h3>
+          <p>Get recognized under the Startup India initiative and unlock exclusive government benefits.</p>
+          <div class="service-tags">
+            <span class="service-tag">Innovation</span>
+            <span class="service-tag">Risk Taking</span>
+            <span class="service-tag">Agile & Flexible</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🏭</div>
+          <h3>MSME Registration</h3>
+          <p>Register as a Micro, Small & Medium Enterprise for government schemes and financial benefits.</p>
+          <div class="service-tags">
+            <span class="service-tag">Adaptability</span>
+            <span class="service-tag">Job Creation</span>
+            <span class="service-tag">Sustainability</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🪙</div>
+          <h3>Trade License</h3>
+          <p>Obtain a trade license for legal authorization to conduct business in your area.</p>
+          <div class="service-tags">
+            <span class="service-tag">Business ID</span>
+            <span class="service-tag">Legal Auth</span>
+            <span class="service-tag">Credibility</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🍽️</div>
+          <h3>Food License (FSSAI)</h3>
+          <p>Get your FSSAI food license for food safety assurance and consumer protection.</p>
+          <div class="service-tags">
+            <span class="service-tag">Food Safety</span>
+            <span class="service-tag">Authentication</span>
+            <span class="service-tag">Consumer Protection</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🏗️</div>
+          <h3>Factory License</h3>
+          <p>Factory license registration ensuring environmental compliance and worker welfare.</p>
+          <div class="service-tags">
+            <span class="service-tag">Environmental</span>
+            <span class="service-tag">Worker Welfare</span>
+            <span class="service-tag">Public Safety</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🌿</div>
+          <h3>Pollution Board License</h3>
+          <p>Pollution board license ensuring your business meets environmental protection standards.</p>
+          <div class="service-tags">
+            <span class="service-tag">Pollution Control</span>
+            <span class="service-tag">Collaboration</span>
+            <span class="service-tag">Environment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GST Services -->
+    <div class="tab-panel" id="tab-gst-services">
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-card-icon">📊</div>
+          <h3>GST Advisory & Return Filing</h3>
+          <p>Periodic GST return filing, tax payment coordination, and reconciliation of your records.</p>
+          <div class="service-tags">
+            <span class="service-tag">Periodic Filing</span>
+            <span class="service-tag">Tax Payment</span>
+            <span class="service-tag">Reconciliation</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">⚖️</div>
+          <h3>Representation & Appeal</h3>
+          <p>Expert tax advice and strategic planning for GST appeals and authority representations.</p>
+          <div class="service-tags">
+            <span class="service-tag">Expert Advice</span>
+            <span class="service-tag">Tax Planning</span>
+            <span class="service-tag">Record-Keeping</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">💰</div>
+          <h3>GST Refund</h3>
+          <p>Timely recovery of GST refunds, refund audits, and thorough reconciliation of accounts.</p>
+          <div class="service-tags">
+            <span class="service-tag">Timely Recovery</span>
+            <span class="service-tag">Refund Audits</span>
+            <span class="service-tag">Reconciliation</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🔍</div>
+          <h3>GST Audit</h3>
+          <p>Comprehensive documentation review, verification, and rectification of GST records.</p>
+          <div class="service-tags">
+            <span class="service-tag">Doc Review</span>
+            <span class="service-tag">Verification</span>
+            <span class="service-tag">Rectification</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Income Tax -->
+    <div class="tab-panel" id="tab-income-tax">
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-card-icon">📝</div>
+          <h3>Advisory & Filing</h3>
+          <p>Tax planning strategies, law expertise, and risk management for income tax compliance.</p>
+          <div class="service-tags">
+            <span class="service-tag">Tax Planning</span>
+            <span class="service-tag">Law Expertise</span>
+            <span class="service-tag">Risk Mgmt</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🏛️</div>
+          <h3>Representation & Appeal</h3>
+          <p>Tax dispute resolution, court representation, and expert guidance for income tax appeals.</p>
+          <div class="service-tags">
+            <span class="service-tag">Dispute Resolution</span>
+            <span class="service-tag">Court Rep</span>
+            <span class="service-tag">Expert Guidance</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🔎</div>
+          <h3>Income Tax Audit</h3>
+          <p>Thorough record review, tax adjustments, and complete documentation for income tax audits.</p>
+          <div class="service-tags">
+            <span class="service-tag">Record Review</span>
+            <span class="service-tag">Tax Adjustments</span>
+            <span class="service-tag">Documentation</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">💻</div>
+          <h3>E-TDS Filing</h3>
+          <p>Digital submission of TDS returns with FVU validation and challan verification.</p>
+          <div class="service-tags">
+            <span class="service-tag">Digital Sub</span>
+            <span class="service-tag">FVU Validation</span>
+            <span class="service-tag">Challan Check</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">📉</div>
+          <h3>Lower TDS Certificate</h3>
+          <p>Get lower TDS deduction certificates for reduced tax deductions and smooth transitions.</p>
+          <div class="service-tags">
+            <span class="service-tag">Reduced TDS</span>
+            <span class="service-tag">Tax Exemption</span>
+            <span class="service-tag">Smooth Transition</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🌐</div>
+          <h3>Tax Residency Certificate</h3>
+          <p>Proof of tax residency for treaty benefits, recognition, and international compliance.</p>
+          <div class="service-tags">
+            <span class="service-tag">Proof of Residency</span>
+            <span class="service-tag">Treaty Benefits</span>
+            <span class="service-tag">Recognition</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">💳</div>
+          <h3>Repatriation of Funds</h3>
+          <p>Certificates for repatriation of funds to access international investment opportunities.</p>
+          <div class="service-tags">
+            <span class="service-tag">Fund Access</span>
+            <span class="service-tag">Risk Diversification</span>
+            <span class="service-tag">Investment Opps</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other Services -->
+    <div class="tab-panel" id="tab-other-services">
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-card-icon">📚</div>
+          <h3>Accounting & Auditing</h3>
+          <p>Professional bookkeeping, financial statement preparation, and comprehensive audit services.</p>
+          <div class="service-tags">
+            <span class="service-tag">Bookkeeping</span>
+            <span class="service-tag">Financial Reports</span>
+            <span class="service-tag">Audit</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">📈</div>
+          <h3>Equity & Commodity Trading</h3>
+          <p>Expert guidance on equity, commodity, and derivative trading for individual investors.</p>
+          <div class="service-tags">
+            <span class="service-tag">Equity</span>
+            <span class="service-tag">Commodity</span>
+            <span class="service-tag">Derivatives</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">💼</div>
+          <h3>Demat & Mutual Funds</h3>
+          <p>Open Demat accounts and invest in mutual funds for long-term wealth creation.</p>
+          <div class="service-tags">
+            <span class="service-tag">Demat Account</span>
+            <span class="service-tag">SIP</span>
+            <span class="service-tag">Wealth Creation</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">🔏</div>
+          <h3>Digital Signature</h3>
+          <p>Obtain Class 2 and Class 3 Digital Signature Certificates for secure digital transactions.</p>
+          <div class="service-tags">
+            <span class="service-tag">DSC Class 2 & 3</span>
+            <span class="service-tag">Legal Validity</span>
+            <span class="service-tag">E-Signing</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">™️</div>
+          <h3>Trademark Registration</h3>
+          <p>Protect your brand with trademark registration and intellectual property safeguarding.</p>
+          <div class="service-tags">
+            <span class="service-tag">Brand Protection</span>
+            <span class="service-tag">IP Rights</span>
+            <span class="service-tag">Legal Shield</span>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-icon">📄</div>
+          <h3>Legal & Record Services</h3>
+          <p>Legal personality documentation, record-keeping, and compliance management for businesses.</p>
+          <div class="service-tags">
+            <span class="service-tag">Legal Personality</span>
+            <span class="service-tag">Record Keeping</span>
+            <span class="service-tag">Compliance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY INCORPORATION -->
+<section id="company">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">Company Incorporation</div>
+      <h2 class="section-title">Choose the Right<br>Business Structure</h2>
+      <p class="section-sub">We help you set up the right legal entity — from sole proprietorships to private limited companies — with complete registration support.</p>
+    </div>
+    <div class="company-grid">
+      <div class="company-card reveal">
+        <div class="company-card-header">
+          <div class="company-card-icon">👤</div>
+          <h3>Proprietary Concern</h3>
+        </div>
+        <p>No legal distinction between the business and the owner. The owner assumes full responsibility for the business's operations, liabilities, and profits.</p>
+        <ul class="feature-list">
+          <li>Ownership</li>
+          <li>Control</li>
+          <li>Decision-Making</li>
+        </ul>
+      </div>
+      <div class="company-card reveal">
+        <div class="company-card-header">
+          <div class="company-card-icon">🤝</div>
+          <h3>Partnership Firms</h3>
+        </div>
+        <p>Two or more individuals come together to carry on a business with the shared goal of making a profit.</p>
+        <ul class="feature-list">
+          <li>Agreement</li>
+          <li>Flexibility</li>
+          <li>Shared Profits</li>
+        </ul>
+      </div>
+      <div class="company-card reveal">
+        <div class="company-card-header">
+          <div class="company-card-icon">🏢</div>
+          <h3>LLP Firms</h3>
+        </div>
+        <p>Business structure combining features of both a partnership and a corporation, providing limited liability protection to its partners.</p>
+        <ul class="feature-list">
+          <li>Flexible Ownership</li>
+          <li>Pass-through Taxation</li>
+          <li>Professional Autonomy</li>
+        </ul>
+      </div>
+      <div class="company-card reveal">
+        <div class="company-card-header">
+          <div class="company-card-icon">🏛️</div>
+          <h3>Private Limited Co.</h3>
+        </div>
+        <p>Business structure offering limited liability protection to shareholders, with a separate legal entity distinct from its owners.</p>
+        <ul class="feature-list">
+          <li>Limited Liability</li>
+          <li>Separate Legal Entity</li>
+          <li>Management Structure</li>
+        </ul>
+      </div>
+      <div class="company-card reveal">
+        <div class="company-card-header">
+          <div class="company-card-icon">🏛️</div>
+          <h3>Trust / Section 8 Co.</h3>
+        </div>
+        <p>Individuals formally establish a society or trust as a legal entity, fulfilling legal requirements as outlined by relevant laws.</p>
+        <ul class="feature-list">
+          <li>Tax Benefits</li>
+          <li>Recognition & Legitimacy</li>
+          <li>Governance & Transparency</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <h2>Trusted Financial Partner</h2>
+        <p>MK Associates has been delivering reliable accounting, tax, and financial advisory services across South Coorg and Karnataka, helping businesses and individuals navigate India's complex tax landscape with confidence.</p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong>500+</strong>
+            <span>Happy Clients</span>
+          </div>
+          <div class="about-stat">
+            <strong>10+</strong>
+            <span>Years Experience</span>
+          </div>
+          <div class="about-stat">
+            <strong>15+</strong>
+            <span>Services Offered</span>
+          </div>
+          <div class="about-stat">
+            <strong>100%</strong>
+            <span>Compliance</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <div class="section-label">About MK Associates</div>
+        <h2>Expertise You Can<br>Rely On</h2>
+        <p>MK Associates is a full-service accounting and tax firm based in Gonikoppal, South Coorg, Karnataka. We specialize in providing comprehensive financial solutions including GST services, income tax filing, company incorporation, and investment advisory.</p>
+        <p>Our team is dedicated to delivering accurate, timely, and cost-effective financial services that empower our clients to make informed decisions and stay compliant with all regulatory requirements.</p>
+        <div class="professional-info">
+          <h4>Lead Professional</h4>
+          <div class="pro-name">Ajith Kumar VH</div>
+          <div class="pro-title">Internal Auditor · M.COM · CMA Inter</div>
+          <div class="pro-contacts">
+            <div class="pro-contact">
+              <span class="pro-contact-icon">📞</span>
+              <span>+91 95623 50095</span>
+            </div>
+            <div class="pro-contact">
+              <span class="pro-contact-icon">📞</span>
+              <span>+91 88481 33670</span>
+            </div>
+            <div class="pro-contact">
+              <span class="pro-contact-icon">✉️</span>
+              <span>ajithvh@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's Discuss Your<br>Financial Needs</h2>
+      <p class="section-sub">Fill out the form below for a free consultation. We'll get back to you within 24 hours.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-card reveal">
+        <h3>Contact Information</h3>
+        <p>Reach out via call, WhatsApp, or email — we're available Monday to Saturday, 9 AM to 6 PM.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <strong>Phone / WhatsApp</strong>
+              <span>
+                <a href="tel:+919562350095">+91 95623 50095</a><br>
+                <a href="tel:+918848133670">+91 88481 33670</a>
+              </span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              <span><a href="mailto:ajithvh@gmail.com">AJITHVH@GMAIL.COM</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <strong>Office Address</strong>
+              <span>Sudha Building, Mysore Road,<br>Gonikoppal, South Coorg,<br>Karnataka</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div class="contact-item-text">
+              <strong>Working Hours</strong>
+              <span>Mon–Sat: 9:00 AM – 6:00 PM<br>Sunday: Closed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <h3>Send an Enquiry</h3>
+        <p>Tell us about your requirements and we'll reach out with the right solution.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="name" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Service Required *</label>
+          <select id="service" required>
+            <option value="">Select a service...</option>
+            <optgroup label="Business Registrations">
+              <option>GST Registration</option>
+              <option>PAN & TAN</option>
+              <option>Shop & Establishment Registration</option>
+              <option>Provident Fund (PF) Registration</option>
+              <option>Professional Tax (PT) Registration</option>
+              <option>Startup India Registration</option>
+              <option>MSME Registration</option>
+              <option>Trade License Registration</option>
+              <option>Food License (FSSAI)</option>
+              <option>Factory License</option>
+              <option>Pollution Board License</option>
+            </optgroup>
+            <optgroup label="GST Services">
+              <option>GST Advisory & Return Filing</option>
+              <option>GST Representation & Appeal</option>
+              <option>GST Refund</option>
+              <option>GST Audit</option>
+            </optgroup>
+            <optgroup label="Income Tax">
+              <option>IT Advisory & Filing</option>
+              <option>IT Representation & Appeal</option>
+              <option>Income Tax Audit</option>
+              <option>E-TDS Filing</option>
+              <option>Lower TDS Certificate</option>
+              <option>Tax Residency Certificate</option>
+              <option>Certificate for Repatriation of Funds</option>
+            </optgroup>
+            <optgroup label="Company Incorporation">
+              <option>Proprietary Concern</option>
+              <option>Partnership Firm</option>
+              <option>LLP Registration</option>
+              <option>Private Limited Company</option>
+              <option>Trust / Section 8 Company</option>
+            </optgroup>
+            <optgroup label="Other Services">
+              <option>Accounting & Auditing</option>
+              <option>Equity / Commodity / Derivative Trading</option>
+              <option>Demat & Mutual Funds</option>
+              <option>Digital Signature (DSC)</option>
+              <option>Trademark Registration</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message / Additional Details</label>
+          <textarea id="message" placeholder="Briefly describe your requirement or any questions..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="submitForm()">📩 Submit Enquiry</button>
+        <div class="form-success" id="form-success">
+          ✅ Thank you! Your enquiry has been received. We'll contact you shortly.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-icon">MK</div>
+        <p>MK Associates provides expert accounting, tax, and financial advisory services to businesses and individuals across South Coorg and Karnataka.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services">GST Registration & Filing</a></li>
+          <li><a href="#services">Income Tax Filing</a></li>
+          <li><a href="#services">Accounting & Auditing</a></li>
+          <li><a href="#company">Company/LLP/Partnership</a></li>
+          <li><a href="#services">Digital Signature</a></li>
+          <li><a href="#services">Trademark</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#company">Incorporations</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Reach Us</h4>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">📍</span>
+          <span>Sudha Building, Mysore Road, Gonikoppal, South Coorg, Karnataka</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">📞</span>
+          <a href="tel:+919562350095">+91 95623 50095</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">📞</span>
+          <a href="tel:+918848133670">+91 88481 33670</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">✉️</span>
+          <a href="mailto:ajithvh@gmail.com">AJITHVH@GMAIL.COM</a>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>© 2024 MK Associates. All rights reserved.</span>
+      <span>Accounting & Tax Services · Gonikoppal, Karnataka</span>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+    document.getElementById('back-top').classList.toggle('show', window.scrollY > 400);
+  });
+
+  // Hamburger
+  const ham = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  ham.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    if (mobileMenu.classList.contains('open')) {
+      mobileMenu.style.display = 'block';
+    }
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    setTimeout(() => { mobileMenu.style.display = ''; }, 300);
+  }
+
+  // Tabs
+  function showTab(tabId) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Nav active link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Form submit
+  function submitForm() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const service = document.getElementById('service').value;
+
+    if (!name) { alert('Please enter your full name.'); return; }
+    if (!phone) { alert('Please enter your phone number.'); return; }
+    if (!service) { alert('Please select a service.'); return; }
+
+    document.getElementById('form-success').style.display = 'block';
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('service').value = '';
+    document.getElementById('message').value = '';
+    setTimeout(() => { document.getElementById('form-success').style.display = 'none'; }, 5000);
+  }
+</script>
+</body>
+</html>
+
